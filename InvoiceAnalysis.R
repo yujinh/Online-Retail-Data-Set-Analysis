@@ -1,5 +1,3 @@
-#Style
-#http://adv-r.had.co.nz/Style.html
 #install package for SQL queries
 install.packages("sqldf")
 options(gsubfn.engine = "R")
@@ -124,9 +122,7 @@ library(data.table)
 fwrite(pos_filtered, "output.csv")
 
 #barplot of monthly revenue - November has highest revenue
-#forecast: http://blog.trap.it/blog/stats-for-marketers-a-simple-way-to-calculate-revenue-growth-in-excel
 #See if I can make the graph split into first cust and reorder.
-#https://www.kaggle.com/hendraherviawan/customer-purchasing-patterns
 pos_filtered$InvoiceYearMonth <- format(pos_filtered$InvoiceDate, "%Y-%m")
 year_month_rev <- aggregate(pos_filtered$Revenue, list(pos_filtered$InvoiceYearMonth), sum)
 year_month_rev <- rename(year_month_rev, Date = Group.1, Revenue = x)
@@ -310,8 +306,6 @@ ggplot(data=y, aes(x= factor(y$bins),fill=..count..)) +
 #---------------------------------------------------------------
 #Customer Segmentation based on Recency and Frequency
 #LifeCycle Grids
-#https://analyzecore.com/2015/02/16/customer-segmentation-lifecycle-grids-with-r/
-#http://blog.jimnovo.com/2007/04/25/engagement-customers/
 
 #Frequencey by each client
 library(plyr)
@@ -521,9 +515,6 @@ rfm$Cust_Monetary.log <- log(rfm$Cust_Monetary)
 #---------------------------------------------------------------
 #Interesting to see which items are most frequently bought
 #which items bring in most revenue
-
-#https://www.r-bloggers.com/customer-segmentation-part-1-k-means-clustering/
-#http://www.kimberlycoffey.com/blog/2016/8/k-means-clustering-for-customer-segmentation
 #Identify high-and low-value customers for marketing purposes.
 
 install.packages("tidytext")
